@@ -4,22 +4,14 @@ on: [push]
 
 jobs:
   build_and_test:
+    name: Add 3 and 7
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: npm install, build, and test
+      - shell: bash
         run: |
-          echo asdf >> testing
-      - name: Archive production artifacts
+          expr 3 + 7 > math-homework.txt
+      - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
         with:
-          name: dist-without-markdown
-          path: |
-            dist
-            !dist/**/*.md
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-coverage-report
-          path: output/test/code-coverage.html
+          name: homework
+          path: math-homework.txt
