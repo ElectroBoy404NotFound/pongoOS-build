@@ -30,5 +30,5 @@ jobs:
         run: |
           git clone https://github.com/konradybcio/pongoOS
           cd pongoOS
-          sed -i "s/-Werror //" Makefile
+          sed -i '' "s/-Werror //" Makefile
           make -j$(nproc)
