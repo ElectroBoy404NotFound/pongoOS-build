@@ -1,10 +1,10 @@
-name: Share data between jobs
+name: Build OS
 
 on: [push]
 
 jobs:
   job_1:
-    name: Add 3 and 7
+    name: Build the OS
     runs-on: macos-latest
     steps:
       - shell: bash
@@ -13,7 +13,7 @@ jobs:
           cd pongoOS
           sed -i '' "s/-Werror //" Makefile
           make -j$(sysctl -n hw.logicalcpu)
-      - name: Upload math result for job 1
+      - name: Upload the result
         uses: actions/upload-artifact@v3
         with:
           name: Pongo
